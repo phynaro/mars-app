@@ -12,8 +12,11 @@ RUN npm ci
 COPY src/ ./src/
 COPY swagger/ ./swagger/
 
-# Create uploads directory
-RUN mkdir -p uploads/avatars
+# Copy uploads directory (if it exists)
+COPY uploads/ ./uploads/
+
+# Create uploads directories if they don't exist
+RUN mkdir -p uploads/avatars uploads/tickets
 
 # Expose port
 EXPOSE 3001
