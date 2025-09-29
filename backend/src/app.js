@@ -24,14 +24,14 @@ const corsOptions = {
 
    // console.log(`CORS Check - Origin: ${origin}, FRONTEND_URL: ${process.env.FRONTEND_URL}`);
     
-    // Allow localhost, 127.0.0.1, and local network IPs
-    // if (origin.includes('localhost') || 
-    //     origin.includes('127.0.0.1') || 
-    //     origin.includes('192.168.0.') ||
-    //     origin.includes('192.168.1.')) {
-    //  // console.log(`CORS Allowed - Local network: ${origin}`);
-    //   return callback(null, true);
-    // }
+   // Allow localhost, 127.0.0.1, and local network IPs
+    if (origin.includes('localhost') || 
+        origin.includes('127.0.0.1') || 
+        origin.includes('192.168.0.') ||
+        origin.includes('192.168.1.')) {
+     // console.log(`CORS Allowed - Local network: ${origin}`);
+      return callback(null, true);
+    }
     
     if (allowedOrigins.indexOf(origin) !== -1) {
      // console.log(`CORS Allowed - Explicit match: ${origin}`);
