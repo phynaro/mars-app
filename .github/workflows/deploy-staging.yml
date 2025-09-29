@@ -28,18 +28,9 @@ jobs:
     environment: staging-frontend
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup deployment directory
-      run: |
-        mkdir -p /opt/mars-app/frontend
-        cp -r deployment/* /opt/mars-app/frontend/
-        
     - name: Deploy frontend
       working-directory: /opt/mars-app/frontend
       run: |
-        chmod +x deploy_frontend.sh
         ./deploy_frontend.sh ${{ github.event.inputs.environment }}
         
     - name: Verify deployment
@@ -53,18 +44,9 @@ jobs:
     environment: staging-backend
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup deployment directory
-      run: |
-        mkdir -p /opt/mars-app/backend
-        cp -r deployment/* /opt/mars-app/backend/
-        
     - name: Deploy backend
       working-directory: /opt/mars-app/backend
       run: |
-        chmod +x deploy_backend.sh
         ./deploy_backend.sh ${{ github.event.inputs.environment }}
         
     - name: Verify deployment
