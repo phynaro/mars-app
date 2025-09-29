@@ -495,11 +495,12 @@ class DashboardService {
     fromYear?: string | number;
     toYear?: string | number;
   } = {}): Promise<WorkOrderTrendResponse> {
-    const url = new URL(`${this.baseURL}/workorder-volume-trend`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/workorder-volume-trend${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch work order volume trend');
     return res.json();
   }
@@ -511,11 +512,12 @@ class DashboardService {
     compare_endDate?: string;   // YYYY-MM-DD
     area_id?: number;
   }): Promise<AbnormalFindingKPIResponse> {
-    const url = new URL(`${this.baseURL}/af`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/af${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch abnormal finding KPIs');
     return res.json();
   }
@@ -524,11 +526,12 @@ class DashboardService {
     year?: number;
     area_id?: number;
   } = {}): Promise<TicketsCountPerPeriodResponse> {
-    const url = new URL(`${this.baseURL}/tickets-count-per-period`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/tickets-count-per-period${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch tickets count per period');
     return res.json();
   }
@@ -536,11 +539,12 @@ class DashboardService {
   async getAreaActivityData(params: {
     year?: number;
   } = {}): Promise<AreaActivityResponse> {
-    const url = new URL(`${this.baseURL}/area-activity`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/area-activity${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch area activity data');
     return res.json();
   }
@@ -550,11 +554,12 @@ class DashboardService {
     endDate: string;
     area_id?: number;
   }): Promise<UserActivityResponse> {
-    const url = new URL(`${this.baseURL}/user-activity`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/user-activity${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch user activity data');
     return res.json();
   }
@@ -563,11 +568,12 @@ class DashboardService {
     year?: number;
     area_id?: number;
   } = {}): Promise<CalendarHeatmapResponse> {
-    const url = new URL(`${this.baseURL}/calendar-heatmap`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/calendar-heatmap${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch calendar heatmap data');
     return res.json();
   }
@@ -575,11 +581,12 @@ class DashboardService {
   async getDowntimeAvoidanceTrend(params: {
     year?: number;
   } = {}): Promise<DowntimeAvoidanceTrendResponse> {
-    const url = new URL(`${this.baseURL}/downtime-avoidance-trend`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/downtime-avoidance-trend${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch downtime avoidance trend data');
     return res.json();
   }
@@ -588,11 +595,12 @@ class DashboardService {
     year?: number;
     area_id?: number;
   } = {}): Promise<CostAvoidanceResponse> {
-    const url = new URL(`${this.baseURL}/cost-avoidance`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/cost-avoidance${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch cost avoidance data');
     return res.json();
   }
@@ -601,11 +609,12 @@ class DashboardService {
     startDate: string;
     endDate: string;
   }): Promise<DowntimeImpactLeaderboardResponse> {
-    const url = new URL(`${this.baseURL}/downtime-impact-leaderboard`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/downtime-impact-leaderboard${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch downtime impact leaderboard data');
     return res.json();
   }
@@ -614,11 +623,12 @@ class DashboardService {
     startDate: string;
     endDate: string;
   }): Promise<CostImpactLeaderboardResponse> {
-    const url = new URL(`${this.baseURL}/cost-impact-leaderboard`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/cost-impact-leaderboard${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch cost impact leaderboard data');
     return res.json();
   }
@@ -628,11 +638,12 @@ class DashboardService {
     startDate: string;
     endDate: string;
   }): Promise<OntimeRateByAreaResponse> {
-    const url = new URL(`${this.baseURL}/ontime-rate-by-area`);
-    url.searchParams.append('startDate', params.startDate);
-    url.searchParams.append('endDate', params.endDate);
+    const searchParams = new URLSearchParams();
+    searchParams.append('startDate', params.startDate);
+    searchParams.append('endDate', params.endDate);
+    const url = `${this.baseURL}/ontime-rate-by-area?${searchParams.toString()}`;
 
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch ontime rate by area data');
     return res.json();
   }
@@ -643,12 +654,13 @@ class DashboardService {
     endDate: string;
     area_id: number;
   }): Promise<OntimeRateByUserResponse> {
-    const url = new URL(`${this.baseURL}/ontime-rate-by-user`);
-    url.searchParams.append('startDate', params.startDate);
-    url.searchParams.append('endDate', params.endDate);
-    url.searchParams.append('area_id', params.area_id.toString());
+    const searchParams = new URLSearchParams();
+    searchParams.append('startDate', params.startDate);
+    searchParams.append('endDate', params.endDate);
+    searchParams.append('area_id', params.area_id.toString());
+    const url = `${this.baseURL}/ontime-rate-by-user?${searchParams.toString()}`;
 
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch ontime rate by user data');
     return res.json();
   }
@@ -659,12 +671,13 @@ class DashboardService {
     endDate: string;
     area_id: number;
   }): Promise<TicketResolveDurationByUserResponse> {
-    const url = new URL(`${this.baseURL}/ticket-resolve-duration-by-user`);
-    url.searchParams.append('startDate', params.startDate);
-    url.searchParams.append('endDate', params.endDate);
-    url.searchParams.append('area_id', params.area_id.toString());
+    const searchParams = new URLSearchParams();
+    searchParams.append('startDate', params.startDate);
+    searchParams.append('endDate', params.endDate);
+    searchParams.append('area_id', params.area_id.toString());
+    const url = `${this.baseURL}/ticket-resolve-duration-by-user?${searchParams.toString()}`;
 
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch ticket resolve duration by user data');
     return res.json();
   }
@@ -674,11 +687,12 @@ class DashboardService {
     startDate: string;
     endDate: string;
   }): Promise<TicketResolveDurationByAreaResponse> {
-    const url = new URL(`${this.baseURL}/ticket-resolve-duration-by-area`);
-    url.searchParams.append('startDate', params.startDate);
-    url.searchParams.append('endDate', params.endDate);
+    const searchParams = new URLSearchParams();
+    searchParams.append('startDate', params.startDate);
+    searchParams.append('endDate', params.endDate);
+    const url = `${this.baseURL}/ticket-resolve-duration-by-area?${searchParams.toString()}`;
 
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch ticket resolve duration by area data');
     return res.json();
   }
@@ -689,14 +703,15 @@ class DashboardService {
     endDate: string;
     area_id?: number;
   }): Promise<CostByFailureModeResponse> {
-    const url = new URL(`${this.baseURL}/cost-impact-by-failure-mode`);
-    url.searchParams.append('startDate', params.startDate);
-    url.searchParams.append('endDate', params.endDate);
+    const searchParams = new URLSearchParams();
+    searchParams.append('startDate', params.startDate);
+    searchParams.append('endDate', params.endDate);
     if (params.area_id !== undefined) {
-      url.searchParams.append('area_id', params.area_id.toString());
+      searchParams.append('area_id', params.area_id.toString());
     }
+    const url = `${this.baseURL}/cost-impact-by-failure-mode?${searchParams.toString()}`;
 
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch cost impact by failure mode data');
     return res.json();
   }
@@ -707,14 +722,15 @@ class DashboardService {
     endDate: string;
     area_id?: number;
   }): Promise<DowntimeByFailureModeResponse> {
-    const url = new URL(`${this.baseURL}/downtime-impact-by-failure-mode`);
-    url.searchParams.append('startDate', params.startDate);
-    url.searchParams.append('endDate', params.endDate);
+    const searchParams = new URLSearchParams();
+    searchParams.append('startDate', params.startDate);
+    searchParams.append('endDate', params.endDate);
     if (params.area_id !== undefined) {
-      url.searchParams.append('area_id', params.area_id.toString());
+      searchParams.append('area_id', params.area_id.toString());
     }
+    const url = `${this.baseURL}/downtime-impact-by-failure-mode?${searchParams.toString()}`;
 
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch downtime impact by failure mode data');
     return res.json();
   }
@@ -725,14 +741,15 @@ class DashboardService {
     endDate: string;
     area_id?: number;
   }): Promise<CostImpactReporterLeaderboardResponse> {
-    const url = new URL(`${this.baseURL}/cost-impact-reporter-leaderboard`);
-    url.searchParams.append('startDate', params.startDate);
-    url.searchParams.append('endDate', params.endDate);
+    const searchParams = new URLSearchParams();
+    searchParams.append('startDate', params.startDate);
+    searchParams.append('endDate', params.endDate);
     if (params.area_id !== undefined) {
-      url.searchParams.append('area_id', params.area_id.toString());
+      searchParams.append('area_id', params.area_id.toString());
     }
+    const url = `${this.baseURL}/cost-impact-reporter-leaderboard?${searchParams.toString()}`;
 
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch cost impact reporter leaderboard data');
     return res.json();
   }
@@ -742,11 +759,12 @@ class DashboardService {
     endDate: string;
     area_id?: number;
   }): Promise<DowntimeImpactReporterLeaderboardResponse> {
-    const url = new URL(`${this.baseURL}/downtime-impact-reporter-leaderboard`);
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v) !== '') url.searchParams.set(k, String(v));
+      if (v !== undefined && v !== null && String(v) !== '') searchParams.set(k, String(v));
     });
-    const res = await fetch(url.toString(), { headers: this.headers() });
+    const url = `${this.baseURL}/downtime-impact-reporter-leaderboard${searchParams.toString() ? '?' + searchParams.toString() : ''}`;
+    const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) throw new Error('Failed to fetch downtime impact reporter leaderboard data');
     return res.json();
   }
