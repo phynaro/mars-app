@@ -29,7 +29,6 @@ tmp/
 helps/
 database/
 ci.yml
-deploy-staging.yml
 promote-prod.yml
 rollback-prod.yml
 deployment/
