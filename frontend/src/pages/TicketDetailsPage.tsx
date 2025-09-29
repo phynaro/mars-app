@@ -157,7 +157,7 @@ const TicketDetailsPage: React.FC = () => {
   const apiBase = (
     import.meta.env.VITE_API_URL || "/api"
   ).replace(/\/$/, "");
-  const uploadsBase = apiBase.endsWith("/api") ? apiBase.slice(0, -4) : apiBase;
+  const uploadsBase = apiBase.endsWith("/api") ? apiBase : apiBase + "/api";
   // Load assignees on query change (keep hooks consistent regardless of visibility)
   useEffect(() => {
     let cancelled = false;

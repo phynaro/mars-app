@@ -339,7 +339,7 @@ const AbnormalReportDashboardV2Page: React.FC = () => {
     
     // If it's a relative URL, construct the full URL
     const apiBase = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
-    const uploadsBase = apiBase.endsWith('/api') ? apiBase.slice(0, -4) : apiBase;
+    const uploadsBase = apiBase.endsWith('/api') ? apiBase : apiBase + '/api';
     return `${uploadsBase}${avatarUrl}`;
   }, []);
 

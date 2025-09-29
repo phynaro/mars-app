@@ -35,7 +35,7 @@ const ProfilePage: React.FC = () => {
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<{ x: number; y: number; width: number; height: number } | null>(null);
   const [showLineHelp, setShowLineHelp] = useState(false);
 
-  const uploadsBase = (API_BASE_URL.endsWith('/api') ? API_BASE_URL.slice(0, -4) : API_BASE_URL).replace(/\/$/, '');
+  const uploadsBase = (API_BASE_URL.endsWith('/api') ? API_BASE_URL : API_BASE_URL + '/api').replace(/\/$/, '');
 
   const updateProfile = async () => {
     if (!user) return;
