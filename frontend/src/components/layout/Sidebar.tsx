@@ -218,7 +218,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   <Avatar className="h-8 w-8">
                     {user?.avatarUrl && (
                       <AvatarImage
-                        src={`${(import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "")}${user.avatarUrl}`}
+                        src={`${(import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "").replace(/\/api$/, "")}${user.avatarUrl}`}
                       />
                     )}
                     <AvatarFallback className="bg-primary text-primary-foreground">
@@ -270,7 +270,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <Avatar className="h-8 w-8">
             {user?.avatarUrl && (
               <AvatarImage
-                src={`${(import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "")}${user.avatarUrl}`}
+                src={`${(import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "").replace(/\/api$/, "")}${user.avatarUrl}`}
               />
             )}
             <AvatarFallback className="bg-primary text-primary-foreground">

@@ -21,7 +21,7 @@ export const IconRail: React.FC<IconRailProps> = ({ activeId, onSelect }) => {
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
   const apiBase = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
-  const uploadsBase = apiBase.endsWith('/api') ? apiBase : apiBase + '/api';
+  const uploadsBase = apiBase.endsWith('/api') ? apiBase.slice(0, -4) : apiBase;
 
   // Permission checks disabled: show all items regardless of user level
   const canAccess = (_item: MenuItem) => true;
